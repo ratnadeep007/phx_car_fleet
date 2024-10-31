@@ -1,0 +1,16 @@
+<.header>
+  Driver <%= @driver.id %>
+  <:subtitle>This is a driver record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/drivers/#{@driver}/edit"}>
+      <.button>Edit driver</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @driver.name %></:item>
+  <:item title="Phone"><%= @driver.phone %></:item>
+</.list>
+
+<.back navigate={~p"/drivers"}>Back to drivers</.back>

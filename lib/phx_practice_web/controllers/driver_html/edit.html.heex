@@ -1,0 +1,8 @@
+<.header>
+  Edit Driver <%= @driver.id %>
+  <:subtitle>Use this form to manage driver records in your database.</:subtitle>
+</.header>
+
+<.driver_form changeset={@changeset} action={~p"/drivers/#{@driver}"} />
+
+<.back navigate={~p"/drivers"}>Back to drivers</.back>

@@ -1,6 +1,7 @@
 defmodule PhxPracticeWeb.Router do
   use PhxPracticeWeb, :router
   alias PhxPracticeWeb.CarController
+  alias PhxPracticeWeb.DriverController
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -23,6 +24,7 @@ defmodule PhxPracticeWeb.Router do
     get "/book/*_", BookController, :index
     # get "/book/*", BookController, :index
     resources "/fleet_cars", CarController
+    resources "/drivers", DriverController
   end
 
   # Other scopes may use custom stacks.

@@ -19,4 +19,19 @@ defmodule PhxPractice.FleetFixtures do
 
     car
   end
+
+  @doc """
+  Generate a driver.
+  """
+  def driver_fixture(attrs \\ %{}) do
+    {:ok, driver} =
+      attrs
+      |> Enum.into(%{
+        name: "some name",
+        phone: "some phone"
+      })
+      |> PhxPractice.Fleet.create_driver()
+
+    driver
+  end
 end

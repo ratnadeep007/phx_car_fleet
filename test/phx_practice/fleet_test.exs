@@ -60,4 +60,60 @@ defmodule PhxPractice.FleetTest do
       assert %Ecto.Changeset{} = Fleet.change_car(car)
     end
   end
+
+  describe "drivers" do
+    alias PhxPractice.Fleet.Driver
+
+    import PhxPractice.FleetFixtures
+
+    @invalid_attrs %{name: nil, phone: nil}
+
+    test "list_drivers/0 returns all drivers" do
+      driver = driver_fixture()
+      assert Fleet.list_drivers() == [driver]
+    end
+
+    test "get_driver!/1 returns the driver with given id" do
+      driver = driver_fixture()
+      assert Fleet.get_driver!(driver.id) == driver
+    end
+
+    test "create_driver/1 with valid data creates a driver" do
+      valid_attrs = %{name: "some name", phone: "some phone"}
+
+      assert {:ok, %Driver{} = driver} = Fleet.create_driver(valid_attrs)
+      assert driver.name == "some name"
+      assert driver.phone == "some phone"
+    end
+
+    test "create_driver/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Fleet.create_driver(@invalid_attrs)
+    end
+
+    test "update_driver/2 with valid data updates the driver" do
+      driver = driver_fixture()
+      update_attrs = %{name: "some updated name", phone: "some updated phone"}
+
+      assert {:ok, %Driver{} = driver} = Fleet.update_driver(driver, update_attrs)
+      assert driver.name == "some updated name"
+      assert driver.phone == "some updated phone"
+    end
+
+    test "update_driver/2 with invalid data returns error changeset" do
+      driver = driver_fixture()
+      assert {:error, %Ecto.Changeset{}} = Fleet.update_driver(driver, @invalid_attrs)
+      assert driver == Fleet.get_driver!(driver.id)
+    end
+
+    test "delete_driver/1 deletes the driver" do
+      driver = driver_fixture()
+      assert {:ok, %Driver{}} = Fleet.delete_driver(driver)
+      assert_raise Ecto.NoResultsError, fn -> Fleet.get_driver!(driver.id) end
+    end
+
+    test "change_driver/1 returns a driver changeset" do
+      driver = driver_fixture()
+      assert %Ecto.Changeset{} = Fleet.change_driver(driver)
+    end
+  end
 end
