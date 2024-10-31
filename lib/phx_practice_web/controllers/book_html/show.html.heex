@@ -1,0 +1,19 @@
+<.header>
+  Booking <%= @booking.id %> - <%= @booking.name %>
+  <:subtitle>Booking confirmation</:subtitle>
+  <%!-- <:actions>
+    <.link href={~p"/fleet_cars/#{@car}/edit"}>
+      <.button>Edit car</.button>
+    </.link>
+  </:actions> --%>
+</.header>
+
+<.list>
+  <:item title="Order number"><%= @booking.id %></:item>
+  <:item title="Car"><%= @car.manufacturer %> <%= @car.model %></:item>
+  <:item title="Registration"><%= @car.reg_number %></:item>
+  <:item title="Booking date"><%= @booking.for |> Calendar.strftime("%Y-%m-%d %I:%M %p") %></:item>
+  <:item title="Booked for"><%= @booking.name %></:item>
+</.list>
+
+<.back navigate={~p"/book"}>Back to fleet_cars</.back>

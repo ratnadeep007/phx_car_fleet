@@ -21,7 +21,7 @@ defmodule PhxPracticeWeb.Router do
 
     # get "/", PageController, :home
     get "/", CarController, :index
-    get "/book/*_", BookController, :index
+    resources "/book", BookController
     # get "/book/*", BookController, :index
     resources "/fleet_cars", CarController
     resources "/drivers", DriverController

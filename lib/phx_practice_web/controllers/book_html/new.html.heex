@@ -1,0 +1,8 @@
+<.header>
+  Booking for <%= @car.manufacturer %> - <%= @car.model %>
+  <:subtitle>Reg Number: <%= @car.reg_number %></:subtitle>
+</.header>
+
+<.booking_form changeset={@changeset} car={@car} action={~p"/book"} />
+
+<.back navigate={~p"/book"}>Back to fleet_cars</.back>

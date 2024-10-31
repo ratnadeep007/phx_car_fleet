@@ -21,6 +21,10 @@ defmodule PhxPractice.Fleet do
     Repo.all(Car)
   end
 
+  def list_free_cars do
+    Repo.all(from c in Car, where: c.booked == false)
+  end
+
   @doc """
   Gets a single car.
 
@@ -196,5 +200,33 @@ defmodule PhxPractice.Fleet do
   """
   def change_driver(%Driver{} = driver, attrs \\ %{}) do
     Driver.changeset(driver, attrs)
+  end
+
+  alias PhxPractice.Fleet.Booking
+
+  def list_bookings do
+    Repo.all(Booking)
+  end
+
+  def get_booking!(id), do: Repo.get!(Booking, id)
+
+  def create_booking(attrs \\ %{}) do
+    %Booking{}
+    |> Booking.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def update_booking(%Booking{} = booking, attrs) do
+    booking
+    |> Booking.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_booking(%Booking{} = booking) do
+    Repo.delete(booking)
+  end
+
+  def change_booking(%Booking{} = booking, attrs \\ %{}) do
+    Booking.changeset(booking, attrs)
   end
 end

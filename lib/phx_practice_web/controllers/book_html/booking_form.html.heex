@@ -1,0 +1,12 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:for]} type="datetime-local" label="Booking Date" />
+  <.input field={f[:name]} type="text" label="Enter your name" />
+  <.input field={f[:phone]} type="text" label="Enter your phone number" />
+  <.input field={f[:car_id]} type="hidden" />
+  <:actions>
+    <.button>Book Car</.button>
+  </:actions>
+</.simple_form>
