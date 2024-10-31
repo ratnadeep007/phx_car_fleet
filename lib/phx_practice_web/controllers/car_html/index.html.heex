@@ -2,7 +2,7 @@
   Listing Fleet cars
   <div class="text-gray-500 text-sm"><%= @total_cars %> cars in total</div>
   <:actions>
-    <.link class="bg-blue-100" href={~p"/fleet_cars/new"}>
+    <.link href={~p"/fleet_cars/new"}>
       <.button>New Car</.button>
     </.link>
   </:actions>
@@ -12,6 +12,7 @@
   <:col :let={car} label="Manufacturer"><%= car.manufacturer %></:col>
   <:col :let={car} label="Model"><%= car.model %></:col>
   <:col :let={car} label="Reg number"><%= car.reg_number %></:col>
+  <:col :let={car} label="Booked"><%= car.booked %></:col>
   <:action :let={car}>
     <div class="sr-only">
       <.link navigate={~p"/fleet_cars/#{car}"}>Show</.link>
